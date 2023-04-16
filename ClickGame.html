@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Web Game</title>
+  </head>
+  <body>
+    <h1>Click the Button</h1>
+    <p>Click the button as many times as you can in 10 seconds!</p>
+    <button id="button" onclick="count()">Click me!</button>
+    <p id="score"></p>
+    <script>
+      var clicks = 0;
+      var timeLeft = 10;
+      var timerId;
+      function count() {
+        clicks++;
+        document.getElementById("score").innerHTML = "Score: " + clicks;
+      }
+      function startGame() {
+        timerId = setInterval(function() {
+          timeLeft--;
+          if (timeLeft == 0) {
+            clearInterval(timerId);
+            alert("Time's up! Your score is " + clicks + ".");
+          }
+        }, 1000);
+      }
+      startGame();
+    </script>
+  </body>
+</html>
